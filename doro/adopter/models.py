@@ -1,11 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
+from poster.models import UserProfile, Type
 
 
-# Create your models here.
-class UserProfile(User):
-    user_name = models.CharField(null=True, blank=True, max_length=100)
-    mobile = models.CharField(null=False, blank=False, max_length=12)
+class Adopter(models.Model):
+    user = models.ForeignKey(UserProfile, null=False, blank=False, on_delete=models.CASCADE)
+    type = models.ForeignKey(Type, null=False, blank=False, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user_name
+        return self.user
