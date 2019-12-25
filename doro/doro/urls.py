@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
+    path('auth/', include('user_profile.urls')),
 ]
 admin.site.site_header = 'Doro Intiative'

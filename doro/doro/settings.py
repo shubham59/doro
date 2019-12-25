@@ -25,7 +25,7 @@ SECRET_KEY = 'a)$zhra$vf!&j*3)ngg^o2#vj^3+@z2)^0eoy9+3mlzw$qviqg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.7']
 
 
 # Application definition
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'poster',
     'adopter',
     'qna',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +77,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'doro.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # <-- And here
+    ],
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -83,7 +90,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'doro',
-        'USER': 'shubham',
+        'USER': 'root',
         'PASSWORD': 'shubham@8',
         'HOST': 'localhost',
         'PORT': '3306',
@@ -129,3 +136,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 GRAPPELLI_ADMIN_HEADLINE = "Doro Intiative"
 GRAPPELLI_ADMIN_TITLE = "Doro Intiative"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'shubhamtripathi4u@gmail.com'
+EMAIL_HOST_PASSWORD = 'shub59684'
