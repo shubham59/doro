@@ -20,5 +20,6 @@ urlpatterns = [
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
     path('auth/', include('user_profile.urls')),
+    path('qna/', include('qna.urls')),
 ]
 admin.site.site_header = 'Doro Intiative'
