@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import AdopterOwnQuestions, AdopterFoundQuestions
+from .views import PosterFoundQuestions, PosterOwnQuestions, AdopterQuestions
 
 
 urlpatterns = [
-    path(r'adopter/own/', AdopterOwnQuestions.as_view()),
-    path('adopter/found/', AdopterFoundQuestions.as_view()),
+    path(r'poster/own/', PosterOwnQuestions.as_view()),
+    path('poster/found/', PosterFoundQuestions.as_view()),
+    path('adopter/<int:id>/', AdopterQuestions.as_view()),
 ]

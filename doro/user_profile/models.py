@@ -23,3 +23,11 @@ class UserProfile(User):
 def id_signal(sender, instance, created, **kwargs):
     if created:
         token = Token.objects.create(user=instance)
+
+
+class Posts(models.Model):
+    choices_user = (('pending', 'pending'), ('verified', 'verified'))
+    user = models.ForeignKey(UserProfile, null=False, blank=False, on_delete=models.CASCADE)
+    status = models.CharField(default="pending", max_length=100, blank=False, null=False)
+    #bio = models.TextField(blank=True, null=True)
+

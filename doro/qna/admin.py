@@ -11,5 +11,9 @@ class QuestionsAdmin(admin.ModelAdmin):
 class AnswerAdmin(admin.ModelAdmin):
     list_display = ['user', 'answer', 'question']
 
+    def answer(self,obj):
+        return str(self.answer)
+
 
 admin.site.register(Questions, QuestionsAdmin)
+admin.site.register(Answer)

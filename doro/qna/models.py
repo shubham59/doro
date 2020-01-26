@@ -1,11 +1,12 @@
 from django.db import models
-from poster.models import Type, UserProfile
+from poster.models import Type
+from user_profile.models import Posts, UserProfile
 
 
 # Create your models here.
 class Questions(models.Model):
     choices_user = (('adopter', 'adopter'), ('poster', 'poster'))
-    choices_answer = (('objective', 'objective'), ('full_length', 'full_length'))
+    choices_answer = (('objective', 'objective'), ('full_length', 'full_length'), ('radio_button', 'radio_button'))
     type = models.ForeignKey(Type, null=True, on_delete=models.CASCADE)
     question = models.CharField(max_length=500, null=False, blank=False)
     question_type = models.CharField(choices=choices_user, default=1, max_length=200)
@@ -20,6 +21,7 @@ class Answer(models.Model):
     question = models.ForeignKey(Questions, null=False, blank=False, on_delete=models.CASCADE)
     answer = models.CharField(max_length=1000, null=True, blank=True)
     user = models.ForeignKey(UserProfile, null=False, blank=False, on_delete=models.CASCADE)
+    post = models.ForeignKey(Posts, null=True, blank=False, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.answer
+        return str(self.answer)
