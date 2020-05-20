@@ -5,7 +5,7 @@ django-formtools==1.0
 django-grappelli==2.13.2
 django-reversion==3.0.5
 future==0.15.2
-httplib2==0.9.2
+httplib2==0.18.0
 mysqlclient==1.4.6
 pytz==2019.3
 six==1.10.0
